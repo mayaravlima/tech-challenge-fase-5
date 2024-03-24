@@ -38,6 +38,15 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
 
                 try {
                     jwtUtil.validateToken(token);
+
+                    var role = jwtUtil.extractRole(token);
+
+                    String requiredRole = routeValidator.getRequiredRole(exchange.getRequest());
+
+                    if (requiredRole != null && !requiredRole.equals(role)) {
+                        throw new UnauthorizedException(HttpStatus.UNAUTHORIZED.value(), "Unauthorized");
+                    }
+
                 } catch (Exception e) {
                     throw new UnauthorizedException(HttpStatus.UNAUTHORIZED.value(), "Unauthorized");
                 }

@@ -1,4 +1,5 @@
 package com.postech.fase5.authapi.service;
+import com.postech.fase5.authapi.enums.UserRole;
 
 import com.postech.fase5.authapi.entity.User;
 import com.postech.fase5.authapi.exception.UnauthorizedException;
@@ -32,8 +33,6 @@ public class AuthService {
     private JwtService jwtService;
 
     private final AuthenticationManager authenticationManager;
-
-    private static final String TOKEN_PREFIX = "Bearer ";
 
 
     public UserDTO createUser(SingUpRequest singUpRequest) {
@@ -69,7 +68,7 @@ public class AuthService {
 
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            String jwt = generateToken(userDetails.getUsername());
+            String jwt = generateToken(userDetails.getUsername(), user.getRole());
 
             return new AuthenticateUser(user.getId(), user.getEmail(), jwt);
 
@@ -82,8 +81,8 @@ public class AuthService {
         jwtService.validateToken(token);
     }
 
-    public String generateToken(String email) {
-        return jwtService.generateToken(email);
+    public String generateToken(String email, UserRole role) {
+        return jwtService.generateToken(email, role);
     }
 
     private UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

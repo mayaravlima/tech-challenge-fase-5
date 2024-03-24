@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f8344c5-73b1-4097-9107-cc90761f8f3f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-api/src/main/java/com/postech/fase5/authapi/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-api/src/main/java/com/postech/fase5/authapi/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-api/src/main/java/com/postech/fase5/authapi/service/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-api/src/main/java/com/postech/fase5/authapi/service/JwtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/postech/fase5/gateway/filter/AuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/postech/fase5/gateway/filter/AuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/postech/fase5/gateway/filter/RouteValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/postech/fase5/gateway/filter/RouteValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/postech/fase5/gateway/util/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/postech/fase5/gateway/util/JwtUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +102,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.AuthApiApplication (1).executor": "Run",
-    "Spring Boot.AuthApiApplication.executor": "Debug",
+    "Spring Boot.AuthApiApplication.executor": "Run",
     "Spring Boot.CartApiApplication.executor": "Run",
     "Spring Boot.EcommerceRegistryApplication.executor": "Run",
     "Spring Boot.GatewayApplication.executor": "Run",
@@ -148,6 +148,68 @@
       </set>
     </option>
   </component>
+  <component name="RunManager" selected="Spring Boot.GatewayApplication">
+    <configuration name="AuthApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="auth-api.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.postech.fase5.authapi.AuthApiApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.postech.fase5.authapi.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EcommerceRegistryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="ecommerce-registry.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.postech.fase5.ecommerceregistry.EcommerceRegistryApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.postech.fase5.ecommerceregistry.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="gateway.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.postech.fase5.gateway.GatewayApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.postech.fase5.gateway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductsApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="products-api.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.postech.fase5.productsapi.ProductsApiApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.postech.fase5.productsapi.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.GatewayApplication" />
+        <item itemvalue="Spring Boot.ProductsApiApplication" />
+        <item itemvalue="Spring Boot.AuthApiApplication" />
+        <item itemvalue="Spring Boot.EcommerceRegistryApplication" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -165,7 +227,7 @@
       <option name="presentableId" value="Default" />
       <updated>1711223051481</updated>
       <workItem from="1711223057498" duration="28734000" />
-      <workItem from="1711285612606" duration="4178000" />
+      <workItem from="1711285612606" duration="12411000" />
     </task>
     <servers />
   </component>

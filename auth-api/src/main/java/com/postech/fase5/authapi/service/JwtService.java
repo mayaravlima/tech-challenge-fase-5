@@ -6,6 +6,8 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
 
+import com.postech.fase5.authapi.enums.UserRole;
+
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
@@ -23,8 +25,9 @@ public class JwtService {
     }
 
 
-    public String generateToken(String email) {
+    public String generateToken(String email, UserRole userRole) {
         Map<String, Object> claims = new HashMap<>();
+        claims.put("role", userRole);
         return createToken(claims, email);
     }
 
