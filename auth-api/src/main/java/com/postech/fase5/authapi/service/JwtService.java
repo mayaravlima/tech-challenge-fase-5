@@ -12,6 +12,7 @@ import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @Component
 public class JwtService {
@@ -28,6 +29,11 @@ public class JwtService {
     public String generateToken(String email, UserRole userRole) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", userRole);
+
+        if (userRole == UserRole.CUSTOMER) {
+            claims.put("cartId", UUID.randomUUID().toString());
+        }
+
         return createToken(claims, email);
     }
 

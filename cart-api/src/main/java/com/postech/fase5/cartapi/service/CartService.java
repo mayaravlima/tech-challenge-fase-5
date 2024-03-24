@@ -12,6 +12,7 @@ import com.postech.fase5.cartapi.repository.CartRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
@@ -19,6 +20,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -32,50 +34,75 @@ public class CartService {
     private final CartRepository cartRepository;
     private final ObjectMapper objectMapper;
 
-    public CartResponse processAddRequest(Long userId, List<CartRequest> shoppingCartRequestList) {
+    public CartResponse processAddRequest(String cartId, List<CartRequest> shoppingCartRequestList) {
         return getProductDetails(shoppingCartRequestList)
                 .flatMap(product -> Flux.fromIterable(shoppingCartRequestList)
                         .filter(request -> request.getProductId().equals(product.getId()))
                         .map(request -> updateProductQuantity(product, request.getQuantity())))
                 .collectList()
                 .flatMap(productList -> {
-                    double totalCost = productList.stream().mapToDouble(Product::getAmount).sum() * shoppingCartRequestList.size();
-                    Cart cartEntity = createCartEntity(userId, productList.size(), totalCost, productList);
+                    double totalCost = getTotalCost(productList);
+                    Integer totalItems = totalItems(productList);
+
+                    var optionalCart = cartRepository.findByCartId(cartId);
+
+                    if (optionalCart.isPresent()){
+                        Cart cartEntity = optionalCart.get();
+                        cartEntity.setTotalItems(totalItems);
+                        cartEntity.setTotalCost(totalCost);
+                        cartEntity.setProducts(serializeProducts(productList));
+                        return Mono.fromCallable(() -> cartRepository.save(cartEntity))
+                                .map(cart -> buildCartResponse(cart, productList));
+                    }
+
+                    Cart cartEntity = createCartEntity(cartId, totalItems, totalCost, productList);
                     return Mono.fromCallable(() -> cartRepository.save(cartEntity))
                             .map(cart -> buildCartResponse(cart, productList));
                 }).block();
     }
 
-    public CartResponse getCart(Long userId) {
-        Cart cartEntity = cartRepository.findByUserId(userId);
+    public CartResponse getCart(String cartId) {
+        Cart cartEntity = cartRepository.findByCartId(cartId).orElseThrow(
+                () -> new CartException("Cart not found", HttpStatus.NOT_FOUND.value())
+        );
         List<Product> products = deserializeProducts(cartEntity.getProducts());
         return buildCartResponse(cartEntity, products);
     }
 
-    public CartResponse removeItemFromCart(Long userId, Long productId) {
-        Cart cartEntity = cartRepository.findByUserId(userId);
+    public CartResponse removeItemFromCart(String cartId, Long productId) {
+        Cart cartEntity = cartRepository.findByCartId(cartId).orElseThrow(
+                () -> new CartException("Cart not found", HttpStatus.NOT_FOUND.value())
+        );
         List<Product> products = deserializeProducts(cartEntity.getProducts());
         products.removeIf(product -> product.getId().equals(productId));
         cartEntity.setProducts(serializeProducts(products));
+        cartEntity.setTotalItems(totalItems(products));
+        cartEntity.setTotalCost(getTotalCost(products));
         cartEntity = cartRepository.save(cartEntity);
         return buildCartResponse(cartEntity, products);
     }
 
-    public CartResponse addItemToCart(Long userId, CartRequest cartRequest) {
+    public CartResponse addItemToCart(String cartId, CartRequest cartRequest) {
         return getProductDetails(cartRequest.getProductId())
                 .flatMap(product -> {
                     product.setQuantity(cartRequest.getQuantity());
-                    Cart cartEntity = cartRepository.findByUserId(userId);
+                    Cart cartEntity = cartRepository.findByCartId(cartId).orElseThrow(
+                            () -> new CartException("Cart not found", HttpStatus.NOT_FOUND.value())
+                    );
                     List<Product> products = deserializeProducts(cartEntity.getProducts());
-                    products.add(product);
-                    cartEntity.setProducts(serializeProducts(products));
+                    List<Product> newList = addOrUpdateProduct(products, product);
+                    cartEntity.setProducts(serializeProducts(newList));
+                    cartEntity.setTotalItems(totalItems(newList));
+                    cartEntity.setTotalCost(getTotalCost(newList));
                     cartEntity = cartRepository.save(cartEntity);
                     return Mono.just(buildCartResponse(cartEntity, products));
                 }).block();
     }
 
-    public void clearCart(Long userId) {
-        Cart cartEntity = cartRepository.findByUserId(userId);
+    public void clearCart(String cartId) {
+        Cart cartEntity = cartRepository.findByCartId(cartId).orElseThrow(
+                () -> new CartException("Cart not found", HttpStatus.NOT_FOUND.value())
+        );
         cartEntity.setProducts(serializeProducts(new ArrayList<>()));
         cartEntity.setTotalItems(0);
         cartEntity.setTotalCost(0.0);
@@ -101,11 +128,9 @@ public class CartService {
         return product;
     }
 
-    private Cart createCartEntity(Long userId, int totalItems, double totalCost, List<Product> products) {
+    private Cart createCartEntity(String cartId, int totalItems, double totalCost, List<Product> products) {
         String serializedProducts = serializeProducts(products);
-        Long cartId = generateCartId();
         return Cart.builder()
-                .userId(userId)
                 .cartId(cartId)
                 .totalItems(totalItems)
                 .totalCost(totalCost)
@@ -113,19 +138,14 @@ public class CartService {
                 .build();
     }
 
-
     public CartResponse buildCartResponse(Cart cart, List<Product> products) {
         return CartResponse.builder()
+                .id(cart.getId())
                 .cartId(cart.getCartId())
-                .userId(cart.getUserId())
                 .totalItems(cart.getTotalItems())
                 .totalCost(cart.getTotalCost())
                 .products(products)
                 .build();
-    }
-
-    private Long generateCartId() {
-        return (long) (Math.random() * Math.pow(10, 10));
     }
 
     private String serializeProducts(List<Product> products) {
@@ -142,6 +162,36 @@ public class CartService {
         } catch (JsonProcessingException e) {
             throw new CartException(e.getMessage());
         }
+    }
+
+    public List<Product> addOrUpdateProduct(List<Product> productList, Product newProduct) {
+        boolean existingProduct = false;
+
+        for (Product product : productList) {
+            if (Objects.equals(product.getId(), newProduct.getId())) {
+                product.setQuantity(product.getQuantity() + newProduct.getQuantity());
+                existingProduct = true;
+                break;
+            }
+        }
+
+        if (!existingProduct) {
+            productList.add(newProduct);
+        }
+
+        return productList;
+    }
+
+    public double getTotalCost(List<Product> products) {
+        return products.stream()
+                .mapToDouble(product -> product.getAmount() * product.getQuantity())
+                .reduce(0.0, Double::sum);
+    }
+
+    public int totalItems(List<Product> products) {
+        return products.stream()
+                .mapToInt(Product::getQuantity)
+                .sum();
     }
 
 }

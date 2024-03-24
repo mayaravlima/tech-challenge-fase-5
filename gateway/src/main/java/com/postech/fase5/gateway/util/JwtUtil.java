@@ -29,13 +29,16 @@ public class JwtUtil {
         return (String) extractAllClaims(token).get("role");
     }
 
+    public String extractCustId(String token) {
+        return (String) extractAllClaims(token).get("cartId");
+    }
+
     public Claims extractAllClaims(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(getSignKey())
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
-
     }
 
 }

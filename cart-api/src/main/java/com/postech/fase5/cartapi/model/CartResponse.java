@@ -8,8 +8,8 @@ import java.util.List;
 @Data
 @Builder
 public class CartResponse {
-    private Long userId;
-    private Long cartId;
+    private Long id;
+    private String cartId;
     private Integer totalItems;
     private Double totalCost;
     private List<Product> products;

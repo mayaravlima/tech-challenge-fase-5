@@ -1,9 +1,7 @@
 package com.postech.fase5.cartapi.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -16,8 +14,9 @@ import lombok.*;
 public class Cart {
 
     @Id
-    private Long userId;
-    private Long cartId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String cartId;
     private Integer totalItems;
     private Double totalCost;
     private String products;
