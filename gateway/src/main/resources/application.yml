@@ -12,19 +12,20 @@ spring:
           predicates:
             - Path=/products/**
           filters:
-            - AddResponseHeader=X-RESPONSE-HEADER, ProductRoute Header
+            - AuthenticationFilter
+
         - id: authRoute
           uri: lb://AUTH-API
           predicates:
             - Path=/auth/**
-          filters:
-            - AddRequestHeader=X-REQUEST-HEADER, AuthRoute Header
+
         - id: cartRoute
           uri: lb://CART-API
           predicates:
             - Path=/cart/**
           filters:
-            - AddRequestHeader=X-REQUEST-HEADER, CartRoute Header
+            - AuthenticationFilter
+
     discovery:
       locator:
         lower-case-service-id: true
