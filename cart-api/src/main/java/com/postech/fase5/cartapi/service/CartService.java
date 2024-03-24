@@ -11,6 +11,7 @@ import com.postech.fase5.cartapi.model.Product;
 import com.postech.fase5.cartapi.repository.CartRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
@@ -24,8 +25,9 @@ import java.util.List;
 @Log4j2
 public class CartService {
 
-    private static final String PRODUCT_SERVICE_URL = "http://localhost:8081/products/%s";
+    private static final String PRODUCT_SERVICE_URL = "http://PRODUCT-API/products/%s";
 
+    @Qualifier("webclient")
     private final WebClient.Builder webBuilder;
     private final CartRepository cartRepository;
     private final ObjectMapper objectMapper;
@@ -82,11 +84,6 @@ public class CartService {
     }
 
     private Mono<Product> getProductDetails(Long productId) {
-       var test = webBuilder.build()
-               .get()
-               .uri(String.format(PRODUCT_SERVICE_URL, productId))
-               .retrieve()
-               .bodyToMono(Product.class);
         return webBuilder.build()
                 .get()
                 .uri(String.format(PRODUCT_SERVICE_URL, productId))

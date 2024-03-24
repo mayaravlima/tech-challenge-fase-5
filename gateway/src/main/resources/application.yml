@@ -1,0 +1,48 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: productRoute
+          uri: lb://PRODUCT-API
+          predicates:
+            - Path=/products/**
+          filters:
+            - AddResponseHeader=X-RESPONSE-HEADER, ProductRoute Header
+        - id: authRoute
+          uri: lb://AUTH-API
+          predicates:
+            - Path=/auth/**
+          filters:
+            - AddRequestHeader=X-REQUEST-HEADER, AuthRoute Header
+        - id: cartRoute
+          uri: lb://CART-API
+          predicates:
+            - Path=/cart/**
+          filters:
+            - AddRequestHeader=X-REQUEST-HEADER, CartRoute Header
+    discovery:
+      locator:
+        lower-case-service-id: true
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  security:
+    enabled: false

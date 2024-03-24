@@ -7,17 +7,17 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.30/f195ee86e6c896ea47a1d39defbe20eb59cd149d/lombok-1.18.30.jar" />
         </processorPath>
-        <module name="cart-api.main" />
+        <module name="auth-api.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="com.postech.fase5.cart-api.main" target="17" />
-      <module name="com.postech.fase5.cart-api.test" target="17" />
-      <module name="fase5" target="17" />
-      <module name="fase5.main" target="17" />
-      <module name="fase5.test" target="17" />
-      <module name="shoppingcart-api.main" target="17" />
-      <module name="shoppingcart-api.test" target="17" />
+      <module name="auth-service" target="17" />
+      <module name="com.postech.fase5.auth-api" target="17" />
+      <module name="com.postech.fase5.auth-api.main" target="17" />
+      <module name="com.postech.fase5.auth-api.test" target="17" />
+      <module name="config-service" target="17" />
+      <module name="config-service.main" target="17" />
+      <module name="config-service.test" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>
