@@ -22,6 +22,13 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=ecommerce-cart
+  db4:
+    image: mysql:latest
+    ports:
+      - "3309:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=ecommerce-payment
 
 networks:
   ecommerce-network:

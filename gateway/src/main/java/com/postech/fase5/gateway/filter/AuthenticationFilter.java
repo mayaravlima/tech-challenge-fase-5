@@ -45,9 +45,11 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
 
                     if (role.equals("CUSTOMER")) {
                         var cartId = jwtUtil.extractCustId(token);
+                        var userId = jwtUtil.extractUserId(token);
                         request = exchange.getRequest()
                                 .mutate()
                                 .header("cartId", cartId)
+                                .header("userId", userId.toString())
                                 .build();
                     }
 

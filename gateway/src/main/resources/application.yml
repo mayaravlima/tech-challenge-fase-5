@@ -26,6 +26,13 @@ spring:
           filters:
             - AuthenticationFilter
 
+        - id: paymentRoute
+          uri: lb://PAYMENT-API
+          predicates:
+            - Path=/payment/**
+          filters:
+            - AuthenticationFilter
+
     discovery:
       locator:
         lower-case-service-id: true

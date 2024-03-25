@@ -68,7 +68,11 @@ public class AuthService {
 
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            String jwt = generateToken(userDetails.getUsername(), user.getRole());
+            String jwt = generateToken(
+                    userDetails.getUsername(),
+                    user.getRole(),
+                    user.getId()
+            );
 
             return new AuthenticateUser(user.getId(), user.getEmail(), jwt);
 
@@ -81,8 +85,8 @@ public class AuthService {
         jwtService.validateToken(token);
     }
 
-    public String generateToken(String email, UserRole role) {
-        return jwtService.generateToken(email, role);
+    public String generateToken(String email, UserRole role, Long id) {
+        return jwtService.generateToken(email, role, id);
     }
 
     private UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

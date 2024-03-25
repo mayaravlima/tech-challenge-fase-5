@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/auth-api.main.iml" filepath="$PROJECT_DIR$/.idea/modules/auth-api.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/cart-api.main.iml" filepath="$PROJECT_DIR$/.idea/modules/cart-api.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/payment-api.main.iml" filepath="$PROJECT_DIR$/.idea/modules/payment-api.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/products-api.main.iml" filepath="$PROJECT_DIR$/.idea/modules/products-api.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/tech-challenge-fase-5.iml" filepath="$PROJECT_DIR$/.idea/tech-challenge-fase-5.iml" />
     </modules>

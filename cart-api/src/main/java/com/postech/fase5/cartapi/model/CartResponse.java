@@ -10,6 +10,7 @@ import java.util.List;
 public class CartResponse {
     private Long id;
     private String cartId;
+    private Long userId;
     private Integer totalItems;
     private Double totalCost;
     private List<Product> products;

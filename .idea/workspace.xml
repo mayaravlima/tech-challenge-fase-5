@@ -5,16 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f8344c5-73b1-4097-9107-cc90761f8f3f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-api/src/main/java/com/postech/fase5/authapi/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-api/src/main/java/com/postech/fase5/authapi/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-api/src/main/java/com/postech/fase5/authapi/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-api/src/main/java/com/postech/fase5/authapi/service/AuthService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth-api/src/main/java/com/postech/fase5/authapi/service/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-api/src/main/java/com/postech/fase5/authapi/service/JwtService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cart-api/src/main/java/com/postech/fase5/cartapi/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart-api/src/main/java/com/postech/fase5/cartapi/controller/CartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cart-api/src/main/java/com/postech/fase5/cartapi/entity/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart-api/src/main/java/com/postech/fase5/cartapi/entity/Cart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cart-api/src/main/java/com/postech/fase5/cartapi/model/CartResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart-api/src/main/java/com/postech/fase5/cartapi/model/CartResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-api/src/main/java/com/postech/fase5/cartapi/repository/CartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart-api/src/main/java/com/postech/fase5/cartapi/repository/CartRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cart-api/src/main/java/com/postech/fase5/cartapi/service/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart-api/src/main/java/com/postech/fase5/cartapi/service/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/postech/fase5/gateway/filter/AuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/postech/fase5/gateway/filter/AuthenticationFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/postech/fase5/gateway/util/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/postech/fase5/gateway/util/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +44,9 @@
       <ProjectState />
     </projectState>
     <projectState path="$PROJECT_DIR$/gateway">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/payment-api">
       <ProjectState />
     </projectState>
     <projectState path="$PROJECT_DIR$/products-api">
@@ -96,6 +105,7 @@
     "Gradle.Build cart-api.executor": "Run",
     "Gradle.Build ecommerce-registry.executor": "Run",
     "Gradle.Build gateway.executor": "Run",
+    "Gradle.Build payment-api.executor": "Run",
     "Gradle.Build products-api.executor": "Run",
     "Gradle.Load Gradle Dependencies.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
@@ -110,6 +120,7 @@
     "Spring Boot.CartApiApplication.executor": "Run",
     "Spring Boot.EcommerceRegistryApplication.executor": "Run",
     "Spring Boot.GatewayApplication.executor": "Run",
+    "Spring Boot.PaymentApiApplication.executor": "Run",
     "Spring Boot.ProductsApiApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "17",
@@ -140,8 +151,11 @@
       <recent name="C:\Users\limav\Desktop\tech-challenge-fase-5\auth-api\src\main\java\com\postech\fase5\authapi" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.postech.fase5.cartapi.config" />
+      <recent name="com.postech.fase5.cartapi.exception" />
+      <recent name="com.postech.fase5.paymentapi.exception" />
+      <recent name="com.postech.fase5.paymentapi.config" />
       <recent name="com.postech.fase5.authapi.exception" />
-      <recent name="com.postech.fase5.productsapi.config" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -152,7 +166,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.CartApiApplication">
+  <component name="RunManager" selected="Spring Boot.PaymentApiApplication">
     <configuration name="AuthApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="auth-api.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.postech.fase5.authapi.AuthApiApplication" />
@@ -205,6 +219,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PaymentApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="payment-api.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.postech.fase5.paymentapi.PaymentApiApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProductsApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="products-api.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.postech.fase5.productsapi.ProductsApiApplication" />
@@ -221,9 +242,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.CartApiApplication" />
-        <item itemvalue="Spring Boot.GatewayApplication" />
-        <item itemvalue="Spring Boot.AuthApiApplication" />
         <item itemvalue="Spring Boot.ProductsApiApplication" />
+        <item itemvalue="Spring Boot.AuthApiApplication" />
+        <item itemvalue="Spring Boot.GatewayApplication" />
         <item itemvalue="Spring Boot.EcommerceRegistryApplication" />
       </list>
     </recent_temporary>
@@ -245,7 +266,7 @@
       <option name="presentableId" value="Default" />
       <updated>1711223051481</updated>
       <workItem from="1711223057498" duration="28734000" />
-      <workItem from="1711285612606" duration="25170000" />
+      <workItem from="1711285612606" duration="34972000" />
     </task>
     <servers />
   </component>
@@ -269,11 +290,6 @@
           <url>file://$PROJECT_DIR$/auth-api/src/main/java/com/postech/fase5/authapi/service/CustomUserDetailsService.java</url>
           <line>21</line>
           <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/gateway/src/main/java/com/postech/fase5/gateway/filter/AuthenticationFilter.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -26,12 +26,13 @@ public class JwtService {
     }
 
 
-    public String generateToken(String email, UserRole userRole) {
+    public String generateToken(String email, UserRole userRole, Long id) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", userRole);
 
         if (userRole == UserRole.CUSTOMER) {
             claims.put("cartId", UUID.randomUUID().toString());
+            claims.put("userId", id);
         }
 
         return createToken(claims, email);

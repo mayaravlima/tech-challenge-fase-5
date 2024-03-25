@@ -34,7 +34,7 @@ public class CartService {
     private final CartRepository cartRepository;
     private final ObjectMapper objectMapper;
 
-    public CartResponse processAddRequest(String cartId, List<CartRequest> shoppingCartRequestList) {
+    public CartResponse processAddRequest(String cartId, List<CartRequest> shoppingCartRequestList, Long userId) {
         return getProductDetails(shoppingCartRequestList)
                 .flatMap(product -> Flux.fromIterable(shoppingCartRequestList)
                         .filter(request -> request.getProductId().equals(product.getId()))
@@ -55,7 +55,7 @@ public class CartService {
                                 .map(cart -> buildCartResponse(cart, productList));
                     }
 
-                    Cart cartEntity = createCartEntity(cartId, totalItems, totalCost, productList);
+                    Cart cartEntity = createCartEntity(cartId, totalItems, totalCost, productList, userId);
                     return Mono.fromCallable(() -> cartRepository.save(cartEntity))
                             .map(cart -> buildCartResponse(cart, productList));
                 }).block();
@@ -128,10 +128,11 @@ public class CartService {
         return product;
     }
 
-    private Cart createCartEntity(String cartId, int totalItems, double totalCost, List<Product> products) {
+    private Cart createCartEntity(String cartId, int totalItems, double totalCost, List<Product> products, Long userId) {
         String serializedProducts = serializeProducts(products);
         return Cart.builder()
                 .cartId(cartId)
+                .userId(userId)
                 .totalItems(totalItems)
                 .totalCost(totalCost)
                 .products(serializedProducts)
@@ -142,6 +143,7 @@ public class CartService {
         return CartResponse.builder()
                 .id(cart.getId())
                 .cartId(cart.getCartId())
+                .userId(cart.getUserId())
                 .totalItems(cart.getTotalItems())
                 .totalCost(cart.getTotalCost())
                 .products(products)

@@ -20,9 +20,10 @@ public class CartController {
     @PostMapping
     public ResponseEntity<CartResponse> addProductsToCart(
             @RequestBody List<CartRequest> products,
-            @RequestHeader("cartId") String cartId
+            @RequestHeader("cartId") String cartId,
+            @RequestHeader("userId") Long userId
     ) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(cartService.processAddRequest(cartId, products));
+        return ResponseEntity.status(HttpStatus.CREATED).body(cartService.processAddRequest(cartId, products, userId));
     }
 
     @PostMapping("/add")
