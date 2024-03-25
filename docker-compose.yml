@@ -1,35 +1,87 @@
 version: '3.7'
 
 services:
+  auth-api:
+    build:
+      context: ./auth-api
+    networks:
+      - private-network
+    depends_on:
+      - db1
   db1:
-    image: mysql:latest
+    image: mysql:8.0.36-oracle
     ports:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=ecommerce-auth
+    networks:
+      - private-network
+  products-api:
+    build:
+      context: ./products-api
+    networks:
+      - private-network
+    depends_on:
+      - db2
   db2:
-    image: mysql:latest
+    image: mysql:8.0.36-oracle
     ports:
       - "3307:3306"
+    networks:
+      - private-network
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=ecommerce-product
+  cart-api:
+    build:
+      context: ./cart-api
+    networks:
+      - private-network
+    depends_on:
+      - db3
   db3:
-    image: mysql:latest
+    image: mysql:8.0.36-oracle
     ports:
       - "3308:3306"
+    networks:
+      - private-network
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=ecommerce-cart
+  payment-api:
+    build:
+      context: ./payment-api
+    networks:
+      - private-network
+    depends_on:
+      - db4
   db4:
-    image: mysql:latest
+    image: mysql:8.0.36-oracle
     ports:
       - "3309:3306"
+    networks:
+      - private-network
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=ecommerce-payment
+  gateway:
+    build:
+      context: ./gateway
+    networks:
+      - private-network
+    ports:
+      - "8888:8888"
+    depends_on:
+      - ecommerce-registry
+  ecommerce-registry:
+    build:
+      context: ./ecommerce-registry
+    networks:
+      - private-network
+    ports:
+      - "8761:8761"
 
 networks:
-  ecommerce-network:
+  private-network:
     driver: bridge

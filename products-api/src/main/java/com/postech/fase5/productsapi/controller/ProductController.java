@@ -3,6 +3,7 @@ package com.postech.fase5.productsapi.controller;
 import com.postech.fase5.productsapi.model.ProductRequest;
 import com.postech.fase5.productsapi.model.ProductResponse;
 import com.postech.fase5.productsapi.service.ProductService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +19,12 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping
-    public ResponseEntity<ProductResponse> addProducts(@RequestBody ProductRequest product) {
+    public ResponseEntity<ProductResponse> addProducts(@RequestBody @Valid ProductRequest product) {
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.addProduct(product));
     }
 
     @PostMapping("/all")
-    public ResponseEntity<List<ProductResponse>> addAllProducts(@RequestBody List<ProductResponse> products) {
+    public ResponseEntity<List<ProductResponse>> addAllProducts(@RequestBody @Valid List<ProductResponse> products) {
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.addAllProducts(products));
     }
 
@@ -38,7 +39,7 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProductResponse> updateProduct(@PathVariable Long id, @RequestBody ProductRequest product) {
+    public ResponseEntity<ProductResponse> updateProduct(@PathVariable Long id, @RequestBody @Valid ProductRequest product) {
         return ResponseEntity.status(HttpStatus.OK).body(productService.updateProductById(id, product));
     }
 

@@ -5,7 +5,7 @@ mysql:
   username: root
   password: 123456
   schema: ecommerce-cart
-  url: localhost:3308
+  url: db3:3308
 
 spring:
   datasource:

@@ -3,6 +3,7 @@ package com.postech.fase5.cartapi.controller;
 import com.postech.fase5.cartapi.model.CartRequest;
 import com.postech.fase5.cartapi.model.CartResponse;
 import com.postech.fase5.cartapi.service.CartService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class CartController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<CartResponse> addProductToCart(@RequestHeader("cartId") String cartId, @RequestBody CartRequest cartRequest) {
+    public ResponseEntity<CartResponse> addProductToCart(@RequestHeader("cartId") String cartId, @RequestBody @Valid CartRequest cartRequest) {
         return ResponseEntity.status(HttpStatus.CREATED).body(cartService.addItemToCart(cartId, cartRequest));
     }
 
