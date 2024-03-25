@@ -5,23 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f8344c5-73b1-4097-9107-cc90761f8f3f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-api/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-api/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/cart-api/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-api/src/main/java/com/postech/fase5/cartapi/config/ControllerExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart-api/src/main/java/com/postech/fase5/cartapi/config/ControllerExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-api/src/main/java/com/postech/fase5/cartapi/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart-api/src/main/java/com/postech/fase5/cartapi/controller/CartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-api/src/main/java/com/postech/fase5/cartapi/model/CartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart-api/src/main/java/com/postech/fase5/cartapi/model/CartRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cart-api/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-api/src/test/java/com/postech/fase5/shoppingcartapi/CartApiApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/payment-api/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products-api/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/products-api/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products-api/src/main/java/com/postech/fase5/productsapi/config/ControllerExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/products-api/src/main/java/com/postech/fase5/productsapi/config/ControllerExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products-api/src/main/java/com/postech/fase5/productsapi/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/products-api/src/main/java/com/postech/fase5/productsapi/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products-api/src/main/java/com/postech/fase5/productsapi/model/ProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/products-api/src/main/java/com/postech/fase5/productsapi/model/ProductRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/products-api/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
