@@ -29,11 +29,14 @@ Siga as etapas abaixo para configurar e executar o projeto em seu ambiente local
    ```sh
    cd tech-challenge-5
    ```
-3. Rode o comando para utilizar o Docker Compose e subir o banco de dados:
+3. Rode o comando para utilizar o Docker Compose e subir os bancos de dados:
    ```sh
     docker-compose up --force-recreate -d --build
     ```
-4. Acesse os endpoints
+4. Execute cada um dos microserviços (de preferência começar com o ecommerce-registry):
+   ```sh
+   ./gradlew bootRun 
+5. Acesse os endpoints
    ```sh
    localhost:8888/
    ```

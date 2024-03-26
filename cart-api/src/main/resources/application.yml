@@ -5,7 +5,7 @@ mysql:
   username: root
   password: 123456
   schema: ecommerce-cart
-  url: db3:3308
+  url: localhost:3308
 
 spring:
   datasource:
@@ -24,6 +24,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
   application:
     name: CART-API
 
