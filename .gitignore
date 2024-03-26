@@ -1,3 +1,16 @@
+build/
+.gradle/
+
+*.log
+*.lock
+*.cache/
+
+.gradle/
+.idea/
+*.iml
+.idea/workspace.xml
+
+.gradle/
+build/
 .idea/
 
-.idea/copilot/chatSessions/xd.lck
